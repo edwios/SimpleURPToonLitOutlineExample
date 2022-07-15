@@ -11,10 +11,12 @@ namespace VRMShaders
     public class MaterialFactory : IResponsibilityForDestroyObjects
     {
         private readonly IReadOnlyDictionary<SubAssetKey, Material> m_externalMap;
+        private readonly IReadOnlyDictionary<string, string> m_fallbackShaders;
 
-        public MaterialFactory(IReadOnlyDictionary<SubAssetKey, Material> externalMaterialMap)
+        public MaterialFactory(IReadOnlyDictionary<SubAssetKey, Material> externalMaterialMap, IReadOnlyDictionary<string, string> fallbackShaders)
         {
             m_externalMap = externalMaterialMap;
+            m_fallbackShaders = fallbackShaders;
         }
 
         public struct MaterialLoadInfo
